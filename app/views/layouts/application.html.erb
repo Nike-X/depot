@@ -14,12 +14,24 @@
 	
 	<div id="columns">
 		<div id="side">
+			<% if @cart %>
+				<%= hidden_div_if(@cart.line_items.empty?, id: 'cart') do %>
+					<%= render @cart %>
+				<% end %>
+			<% end %>
+			
 			<ul>
 				<li><a href="http://www....">Home</a></li>
 				<li><a href="http://www....">Questiones</a></li>
 				<li><a href="http://www....">News</a></li>
 				<li><a href="http://www....">Contact</a></li>
 			</ul>
+			
+			<div id="time">
+				<% if @date %>
+					<p><%= @date.strftime "%d/%m/%Y %H:%M:%S" %></p>
+				<% end %>
+			</div>
 		</div>
 
 		<div id="main">
